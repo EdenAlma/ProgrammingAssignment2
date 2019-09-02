@@ -11,13 +11,21 @@ makeCacheMatrix <- function(x = matrix()) {
   get <- function() x 
   
   set <- function(y) {
+    
     x <<- y
     iMatrix <<- NULL
+    
     } 
-  #basically sets the input matrix by refrencing using <<- operator
+  #sets the input matrix by refrencing using <<- operator + reset inverse
   
   getInv <- function() iMatrix #get iMatrix
   setInv <- function(inpt) iMatrix <<- inpt #set iMatrix by refrencing upper scope iMatrix
+  get <- function() x 
+  set <- function(y) {x <<- y} 
+  #basically sets the input matrix by refrencing using <<- operator
+  
+  getInv <- function() iMatrix #get iMatrix
+  setInv <- function(inpt) iMatrix <<- inpt #set '''' by refrencing upper scope iMatrix
   
   z<-list(get = get, set = set, setInv = setInv, getInv = getInv) #create list to be returned
   z
